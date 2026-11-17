@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/scullyds/tokens.css">
+<link rel="stylesheet" href="ds/scullyds/components/bundle.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ffffff;color:#171512;font-family:"Geist",system-ui,sans-serif}
+a{color:inherit}a:hover{color:#171512}
+</style>
+</helmet>
+<div id="top" style="width: 1440px; height: 1180px; box-sizing: border-box; background: #ffffff; color: #171512; font-family: 'Geist', system-ui, sans-serif; font-size: 16px; line-height: 1.55;">
+
+<header class="site-nav">
+  <div class="brand">Think. Create. Transform.</div>
+  <nav class="navlinks" aria-label="Main">
+    <a href="Main.dc.html">Home</a><a href="About.dc.html">About</a><a href="Work.dc.html">Work</a><a href="Contact.dc.html" class="active" aria-current="page">Contact</a>
+  </nav>
+</header>
+
+<section class="org-page-head"><div class="org-wrap">
+  <h1>Have an idea? Let's talk.</h1>
+  <p>Tell me a little about the product, the team and where you're stuck. I read every message and reply personally.</p>
+</div></section>
+
+<section class="org-section" style="padding-bottom: 88px;"><div class="org-wrap" style="display: grid; grid-template-columns: 0.5fr 1fr; gap: 48px;">
+  <dl style="margin: 0; display: flex; flex-direction: column; gap: 28px;">
+    <div><dt style="font-size: 13.6px; color: #5b5648;">Email</dt><dd style="margin: 6px 0 0;"><a class="inline-link" href="mailto:sbalasopoulov@gmail.com">sbalasopoulov@gmail.com</a></dd></div>
+    <div><dt style="font-size: 13.6px; color: #5b5648;">LinkedIn</dt><dd style="margin: 6px 0 0;"><a class="inline-link" href="#top">View profile</a></dd></div>
+    <div><dt style="font-size: 13.6px; color: #5b5648;">Based in</dt><dd style="margin: 6px 0 0;">Denver, CO</dd></div>
+    <div><dt style="font-size: 13.6px; color: #5b5648;">Focus</dt><dd style="margin: 6px 0 0;">UX, UI, Design Systems, Accessibility</dd></div>
+  </dl>
+
+  <form style="display: flex; flex-direction: column; gap: 20px; max-width: 560px;" action="#top">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+      <div class="ui-field"><label class="ui-label" for="c-name">Name</label><input class="ui-input" id="c-name" type="text" autocomplete="name"></div>
+      <div class="ui-field"><label class="ui-label" for="c-email">Email</label><input class="ui-input" id="c-email" type="email" autocomplete="email"></div>
+    </div>
+    <div class="ui-field"><label class="ui-label" for="c-company">Company</label><input class="ui-input" id="c-company" type="text" autocomplete="organization"><p class="ui-field-description">Optional.</p></div>
+    <div class="ui-field"><label class="ui-label" for="c-msg">Message</label><textarea class="ui-textarea" id="c-msg" rows="6" style="min-height: 160px;" placeholder="What are you working on?"></textarea></div>
+    <div><button class="btn solid" type="submit">Send message</button></div>
+  </form>
+</div></section>
+
+<footer class="org-footer">
+  <span>© 2026 Scully Balasopoulov</span>
+  <nav aria-label="Footer"><a href="#top">LinkedIn</a><a href="#top">Back to top</a></nav>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

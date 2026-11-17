@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { EMAIL, FORM_ACTION, LINKEDIN_URL } from "../../site.config";
+import hero from "../../assets/home-hero.png";
+
+const description =
+  "Tell me a little about the product, the team and where you're stuck. I read every message and reply personally.";
+const netlify = FORM_ACTION.startsWith("/");
+---
+
+<BaseLayout title="Contact — Scully Balasopoulov" description={description} image={hero} showContact={false}>
+  <section class="org-page-head">
+    <div class="org-wrap">
+      <h1>Have an idea? Let's talk.</h1>
+      <p>Tell me a little about the product, the team and where you're stuck. I read every message and reply personally.</p>
+    </div>
+  </section>
+
+  <section class="org-section org-contact-section">
+    <div class="org-wrap contact-grid">
+      <dl class="contact-facts">
+        <div>
+          <dt>Email</dt>
+          <dd><a class="inline-link" href={`mailto:${EMAIL}`}>{EMAIL}</a></dd>
+        </div>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd><a class="inline-link" href={LINKEDIN_URL}>View profile</a></dd>
+        </div>
+        <div>
+          <dt>Based in</dt>
+          <dd>Denver, CO</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>UX, UI, Design Systems, Accessibility</dd>
+        </div>
+      </dl>
+
+      <form
+        class="contact-form"
+        name="contact"
+        method="POST"
+        action={FORM_ACTION}
+        data-netlify={netlify ? "true" : undefined}
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="form-honeypot" aria-hidden="true">
+          <label>Don’t fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+        <div class="contact-pair">
+          <div class="ui-field">
+            <label class="ui-label" for="c-name">Name</label>
+            <input class="ui-input" id="c-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="ui-field">
+            <label class="ui-label" for="c-email">Email</label>
+            <input class="ui-input" id="c-email" name="email" type="email" autocomplete="email" required />
+          </div>
+        </div>
+        <div class="ui-field">
+          <label class="ui-label" for="c-company">Company</label>
+          <input class="ui-input" id="c-company" name="company" type="text" autocomplete="organization" />
+          <p class="ui-field-description">Optional.</p>
+        </div>
+        <div class="ui-field">
+          <label class="ui-label" for="c-msg">Message</label>
+          <textarea class="ui-textarea" id="c-msg" name="message" rows="6" placeholder="What are you working on?" required></textarea>
+        </div>
+        <div><button class="btn solid" type="submit">Send message</button></div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

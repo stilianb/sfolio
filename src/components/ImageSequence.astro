@@ -1,0 +1,50 @@
+---
+import type { ImageMetadata } from "astro";
+import FrameImage from "./FrameImage.astro";
+
+interface Item {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  items: Item[];
+  layout?: "stack" | "pair" | "bleed";
+}
+
+const { items, layout = "stack" } = Astro.props;
+const widths = layout === "pair" ? [480, 800, 1100] : [768, 1200, 1600];
+const sizes =
+  layout === "pair"
+    ? "(max-width: 640px) calc(100vw - 40px), 660px"
+    : layout === "bleed"
+      ? "(max-width: 1440px) 100vw, 1440px"
+      : "(max-width: 720px) calc(100vw - 40px), 1376px";
+---
+
+<div class:list={["org-sequence", { bleed: layout === "bleed" }]}>
+  {
+    layout === "pair" ? (
+      <div class="pair">
+        {items.map((item) => (
+          <figure>
+            <div class="frame">
+              <FrameImage src={item.src} alt={item.alt} widths={widths} sizes={sizes} />
+            </div>
+            {item.caption ? <figcaption>{item.caption}</figcaption> : null}
+          </figure>
+        ))}
+      </div>
+    ) : (
+      items.map((item) => (
+        <figure>
+          <div class="frame">
+            <FrameImage src={item.src} alt={item.alt} widths={widths} sizes={sizes} />
+          </div>
+          {item.caption ? <figcaption>{item.caption}</figcaption> : null}
+        </figure>
+      ))
+    )
+  }
+</div>

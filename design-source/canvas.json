@@ -1,0 +1,125 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "About.dc.html": {
+      "h": 3680,
+      "is_interactive": true,
+      "title": "About — desktop",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "CaseStudy-Basecoat.dc.html": {
+      "h": 4699,
+      "is_interactive": true,
+      "title": "Case study: Experian — desktop",
+      "w": 1440,
+      "x": 9120,
+      "y": 0
+    },
+    "CaseStudy-Cisco-quom-2y7x-unx8.dc.html": {
+      "h": 3618,
+      "is_interactive": true,
+      "title": "Exploration: ServiceNow — desktop",
+      "w": 1440,
+      "x": 15200,
+      "y": 0
+    },
+    "CaseStudy-Cisco-quom-2y7x.dc.html": {
+      "h": 3618,
+      "is_interactive": true,
+      "title": "Exploration: JCPenney — desktop",
+      "w": 1440,
+      "x": 13680,
+      "y": 0
+    },
+    "CaseStudy-Cisco-quom-fgix.dc.html": {
+      "h": 4390,
+      "is_interactive": true,
+      "title": "Exploration: Kaiser Permanente — desktop",
+      "w": 1440,
+      "x": 12160,
+      "y": 0
+    },
+    "CaseStudy-Cisco-quom.dc.html": {
+      "h": 3702,
+      "is_interactive": true,
+      "title": "Exploration: Waste Management — desktop",
+      "w": 1440,
+      "x": 10640,
+      "y": 0
+    },
+    "CaseStudy-Cisco.dc.html": {
+      "h": 6242,
+      "is_interactive": true,
+      "title": "Case study: Cisco — desktop",
+      "w": 1440,
+      "x": 7600,
+      "y": 0
+    },
+    "CaseStudy-ServiceNow.dc.html": {
+      "h": 6091,
+      "is_interactive": true,
+      "title": "Case study: ServiceNow — desktop",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "Contact.dc.html": {
+      "h": 1180,
+      "is_interactive": true,
+      "title": "Contact — desktop",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 2660,
+      "is_interactive": true,
+      "title": "Home — desktop",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Work.dc.html": {
+      "h": 2600,
+      "is_interactive": true,
+      "title": "Work — desktop",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-29T21:25:00Z",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "copiedAt": "2026-09-29T23:20:00Z",
+      "namespace": "scullyds",
+      "title": "Scully Balasopoulov",
+      "version": "1790722965-5bf4"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {},
+  "order": [
+    "Main.dc.html",
+    "About.dc.html",
+    "Work.dc.html",
+    "Contact.dc.html",
+    "CaseStudy-ServiceNow.dc.html",
+    "CaseStudy-Cisco.dc.html",
+    "CaseStudy-Basecoat.dc.html",
+    "CaseStudy-Cisco-quom.dc.html",
+    "CaseStudy-Cisco-quom-fgix.dc.html",
+    "CaseStudy-Cisco-quom-2y7x.dc.html",
+    "CaseStudy-Cisco-quom-2y7x-unx8.dc.html"
+  ],
+  "pages": [],
+  "title": "Portfolio Homepage"
+}

@@ -1,0 +1,27 @@
+---
+const path = Astro.url.pathname;
+
+const links = [
+  { href: "/", label: "Home", current: path === "/" },
+  { href: "/about/", label: "About", current: path.startsWith("/about") },
+  { href: "/work/", label: "Work", current: path.startsWith("/work") },
+  { href: "/contact/", label: "Contact", current: path.startsWith("/contact") },
+];
+---
+
+<header class="site-nav" id="top">
+  <a class="brand" href="/">Think. Create. Transform.</a>
+  <nav class="navlinks" aria-label="Main">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class:list={{ active: link.current }}
+          aria-current={link.current ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>

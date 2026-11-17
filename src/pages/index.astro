@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FrameImage from "../components/FrameImage.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CaseCard from "../components/CaseCard.astro";
+import hero from "../assets/home-hero.png";
+import { imageAlt } from "../lib/image-alts";
+import { caseStudies, getWork } from "../lib/work";
+
+const studies = caseStudies(await getWork());
+const description =
+  "For more than 20 years, I've led teams, shaped visions, and built experiences that make complex products feel simple and approachable.";
+---
+
+<BaseLayout title="Scully Balasopoulov" description={description} image={hero}>
+  <section class="org-hero single">
+    <div class="org-wrap org-hero-grid">
+      <div>
+        <h1>Designing digital experiences that matter.</h1>
+        <p class="lede">
+          For more than 20 years, I've led teams, shaped visions, and built experiences that make complex products feel simple and approachable.
+        </p>
+        <p class="lede strong">Simple is hard. That's the point.</p>
+      </div>
+      <div class="org-hero-image">
+        <FrameImage
+          src={hero}
+          alt={imageAlt.hero}
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 860px) calc(100vw - 40px), 42vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="org-section org-about">
+    <div class="org-wrap org-intro-grid">
+      <h2>About</h2>
+      <p>
+        I'm a strategic and creative design leader who transforms brands and enterprise practices across complex digital platforms. <a class="inline-link" href="/about/">Read more</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="org-services">
+    <div class="org-wrap">
+      <h2>Expertise</h2>
+      <div class="org-services-grid">
+        <ServiceCard
+          num="001"
+          title="UX"
+          subtitle="Where human needs meet technology"
+          description="Information architecture, interaction design, rapid prototyping to shape how a product feels and works from end to end."
+        >
+          <svg viewBox="0 0 64 64" fill="none" stroke="var(--destructive)" stroke-width="1.4" aria-hidden="true">
+            <circle cx="32" cy="32" r="22"></circle>
+            <circle cx="32" cy="32" r="13"></circle>
+            <circle cx="32" cy="32" r="4"></circle>
+          </svg>
+        </ServiceCard>
+        <ServiceCard
+          num="002"
+          title="UI"
+          subtitle="Where design becomes tangible"
+          description="Through visual design, interaction, typography, colors, motion, and more. Creating an interface that feels vibrant, intuitive, clear, and engaging."
+        >
+          <svg viewBox="0 0 64 64" fill="none" stroke="var(--destructive)" stroke-width="1.4" aria-hidden="true">
+            <rect x="10" y="10" width="30" height="30" rx="3"></rect>
+            <rect x="24" y="24" width="30" height="30" rx="3"></rect>
+          </svg>
+        </ServiceCard>
+        <ServiceCard
+          num="003"
+          title="Design Systems"
+          subtitle="A foundation for great experiences"
+          description="Atomic design principles. A shared language that helps teams design and build with greater clarity and consistency."
+        >
+          <svg viewBox="0 0 64 64" fill="none" stroke="var(--destructive)" stroke-width="1.4" aria-hidden="true">
+            <rect x="8" y="8" width="20" height="20" rx="2"></rect>
+            <rect x="36" y="8" width="20" height="20" rx="2"></rect>
+            <rect x="8" y="36" width="20" height="20" rx="2"></rect>
+            <rect x="36" y="36" width="20" height="20" rx="2"></rect>
+          </svg>
+        </ServiceCard>
+        <ServiceCard
+          num="004"
+          title="Accessibility"
+          subtitle="Design for everyone"
+          description="Inclusive, WCAG-compliant experiences that widen your reach, so no one gets left out."
+        >
+          <svg viewBox="0 0 64 64" fill="none" stroke="var(--destructive)" stroke-width="1.4" aria-hidden="true">
+            <circle cx="32" cy="18" r="6"></circle>
+            <path d="M8 30c8 6 40 6 48 0" stroke="var(--destructive)"></path>
+            <path d="M32 30v10M32 40l-12 16M32 40l12 16"></path>
+          </svg>
+        </ServiceCard>
+      </div>
+    </div>
+  </section>
+
+  <section class="org-section org-featured">
+    <div class="org-wrap">
+      <div class="org-head"><h2>Featured work</h2></div>
+      <div class="org-work-grid">
+        {
+          studies.map((entry) => (
+            <CaseCard
+              href={`/work/${entry.data.slug}/`}
+              title={entry.data.title}
+              summary={entry.data.summary}
+              image={entry.data.thumbnail}
+              imageAlt={imageAlt[`${entry.data.slug}-thumb` as keyof typeof imageAlt]}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

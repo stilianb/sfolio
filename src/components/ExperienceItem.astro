@@ -1,0 +1,23 @@
+---
+interface Props {
+  role: string;
+  org?: string;
+  dates?: string;
+}
+const { role, org, dates } = Astro.props;
+---
+
+<div class="exp-item">
+  <h3>{role}</h3>
+  <div>
+    {
+      org && dates && (
+        <div class="exp-role">
+          <span class="org">{org}</span>
+          <span class="dates">{dates}</span>
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</div>

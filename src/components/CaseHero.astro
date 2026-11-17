@@ -1,0 +1,37 @@
+---
+import type { ImageMetadata } from "astro";
+import FrameImage from "./FrameImage.astro";
+
+interface Props {
+  title: string;
+  project: string;
+  role: string;
+  type: string;
+  scope: string;
+  cover: ImageMetadata;
+  coverAlt: string;
+}
+const { title, project, role, type, scope, cover, coverAlt } = Astro.props;
+---
+
+<section class="org-case-hero">
+  <div class="org-wrap">
+    <h1>{title}</h1>
+    <dl class="org-case-meta">
+      <div><dt>Project</dt><dd>{project}</dd></div>
+      <div><dt>Role</dt><dd>{role}</dd></div>
+      <div><dt>Type</dt><dd>{type}</dd></div>
+      <div><dt>Scope</dt><dd>{scope}</dd></div>
+    </dl>
+    <div class="org-cover">
+      <FrameImage
+        src={cover}
+        alt={coverAlt}
+        widths={[768, 1200, 1600]}
+        sizes="(max-width: 720px) calc(100vw - 40px), 1376px"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,240 @@
+/* Scully Balasopoulov — generated from tokens.json */
+:root, [data-theme="light"] {
+  --paper: #ffffff; /* Page background and every section ground. Also the text colour on a solid `ink` button. */
+  --paper-dim: #f5f5f3; /* Recessed ground: case-study cards, portrait and hero illustration frames, the fill behind SVG illustrations. */
+  --ink: #171512; /* Headings, primary text, nav active state, link underlines, solid button fill. Reads 18.2:1 on `paper` (light) and 16.1:1 (dark). */
+  --ink-soft: #5b5648; /* Body copy, ledes, card descriptions, dates, nav links at rest, footer. 7.3:1 on `paper` and 6.7:1 on `paper-dim` (light); 8.5:1 and 8.1:1 (dark). */
+  --cobalt: #171512; /* The brand accent: employer names in Work Experience, the accent bar and outlines in illustrations. 10.1:1 on `paper` in light. Same value in dark, where it reads only 1.8:1 on `paper`: as source, it fails as text in dark; keep it to fills and strokes there. */
+  --mustard: #c79a3b; /* Secondary accent, illustration fills only (the CTA block and filled shapes in hero and case art). 2.6:1 on `paper` in light: never use it for text. */
+  --line: rgba(23,21,18,0.14); /* Every hairline: card and frame borders, section dividers, the header's bottom rule, rows in Work Experience. Decorative separation, not a control boundary. */
+  --background: var(--paper); /* shadcn alias. Ground behind every component; same as `paper`. */
+  --foreground: var(--ink); /* shadcn alias. Default text on `background`; same as `ink`. */
+  --card: var(--paper); /* shadcn alias. Card surface. */
+  --card-foreground: var(--ink); /* shadcn alias. Text on `card`. */
+  --popover: var(--paper); /* shadcn alias. Floating surfaces: popover, dropdown, select list, toast. */
+  --popover-foreground: var(--ink); /* shadcn alias. Text on `popover`. */
+  --primary: var(--ink); /* shadcn alias. Checked checkboxes, switches, radios, progress and slider fill, tooltip ground, badge default. */
+  --primary-foreground: var(--paper); /* shadcn alias. Text and marks on `primary` (18.2:1 light, 16.1:1 dark). */
+  --secondary: var(--paper-dim); /* shadcn alias. Secondary badge ground. */
+  --secondary-foreground: var(--ink); /* shadcn alias. Text on `secondary`. */
+  --muted: var(--paper-dim); /* shadcn alias. Tab list track, kbd, avatar fallback, empty-state icon tile. */
+  --muted-foreground: var(--ink-soft); /* shadcn alias. Placeholders, descriptions, helper text, inactive tabs; reads on `background` and `muted` in both themes (6.7:1 minimum). */
+  --accent: var(--paper-dim); /* shadcn alias. Hover and highlighted rows in menus, lists, toggles, pagination; skeleton fill. */
+  --accent-foreground: var(--ink); /* shadcn alias. Text on `accent`. */
+  --border: var(--line); /* shadcn alias. Hairlines inside components: card edges, separators, menu dividers, accordion rules. */
+  --input: #8a8474; /* Borders of controls a person operates: inputs, textareas, selects, checkboxes, radios, the off switch track, outline toggles, OTP slots. 3.7:1 on `background` and 3.4:1 on `muted` (light); 3.7:1 and 3.5:1 (dark). */
+  --ring: var(--ink); /* Keyboard focus: a solid 2px `ring` outline, 2px offset, on every focusable component. */
+  --destructive: #c8261d; /* Irreversible actions and errors: destructive badge and menu item, invalid control border, field error text, destructive alert. Text reads 5.6:1 on `background` and 5.1:1 on `muted` (light); 6.8:1 and 6.5:1 (dark). */
+  --destructive-foreground: #ffffff; /* Text on a `destructive` fill (5.6:1 light, 6.8:1 dark). */
+  --shadow-none: none; /* Cards, frames, controls. Separate with a 1px border instead. */
+  --shadow-overlay: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); /* Floating layers only: popover, dropdown menu, select list, toast. */
+}
+[data-theme="dark"] {
+  --paper: #171512;
+  --paper-dim: #1d1a15;
+  --ink: #f4f1e8;
+  --ink-soft: #b7b1a0;
+  --cobalt: #171512;
+  --mustard: #c79a3b;
+  --line: rgba(244,241,232,0.16);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-dim);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-dim);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--paper-dim);
+  --accent-foreground: var(--ink);
+  --border: var(--line);
+  --input: #77705f;
+  --ring: var(--ink);
+  --destructive: #f47a6f;
+  --destructive-foreground: #171512;
+}
+:root {
+  --space-1: 4px; /* Tight insets: kbd padding, menu padding, gap between a radio and its dot. */
+  --space-2: 8px; /* Gap between a control and its label; menu item side padding; toggle padding. */
+  --space-3: 12px; /* Input side padding; gap inside radio groups; tooltip side padding. */
+  --space-card-gap: 14px; /* Gap between Expertise cards; gap between buttons. */
+  --space-4: 16px; /* Alert and popover padding; toast padding; accordion row padding. */
+  --space-gutter-sm: 20px; /* Page side gutter under 720px; grid gaps inside lists. */
+  --space-case-pad: 22px; /* Case-study card body padding (22px sides, 26px bottom). */
+  --space-6: 24px; /* Card padding and the gap between card sections; empty-state padding. */
+  --space-grid-gap: 28px; /* Gap between case-study cards; top inset of Expertise card icons. */
+  --space-gutter: 32px; /* Page side gutter on desktop (`.wrap`); gap between Experience columns and between rows. */
+  --space-col-gap: 48px; /* Gap between a section's title column and its content (About strip, About intro); margin under the Expertise heading. */
+  --space-section-sm: 56px; /* Vertical padding of the client-list band; space under the About portrait. */
+  --space-section: 64px; /* Vertical padding of standard sections (About strip, Work Experience, Education, Clients). */
+  --space-section-md: 88px; /* Vertical padding of Expertise and the bottom of Featured work. */
+  --space-section-lg: 96px; /* Top padding of the hero and the contact section. */
+  --radius-none: 0; /* Section bands and dividers stay square. */
+  --radius-button: 2px; /* Buttons: nearly square. */
+  --radius-sm: 4px; /* Checkboxes, kbd, menu items, small toast actions. */
+  --radius-md: 6px; /* Inputs, selects, toggles, badges, tab triggers, tooltips, popovers and menus. */
+  --radius-card: 8px; /* Every card, image and illustration frame: Expertise cards, case cards, hero figure, About portrait. */
+  --radius-xl: 12px; /* shadcn Card. */
+  --radius-full: 9999px; /* Switch tracks and thumbs, radios, avatars, progress bars. */
+  --icon-sm: 16px; /* UI glyphs inside controls: chevrons, checks, search, alert icons. */
+  --control-sm: 32px; /* Small controls: switch width, avatar, pagination at small size. */
+  --control: 36px; /* Default height of inputs, selects, toggles, tab lists, pagination links, OTP slots. */
+  --control-lg: 40px; /* Large controls and the empty-state icon tile. */
+  --font-sans: "Geist", system-ui, sans-serif;
+  --text-hero: 500 57.6px/1.08 var(--font-sans); /* Home hero h1. Source: clamp(2.3rem, 4.6vw, 3.6rem); this is the top of the clamp. */
+  --text-page-title: 500 48px/1.1 var(--font-sans); /* Page head h1 on About and Work. Source: clamp(2.1rem, 4vw, 3rem). */
+  --text-contact-title: 500 41.6px/1.2 var(--font-sans); /* Closing contact heading, max 16ch. Source: clamp(1.9rem, 3.6vw, 2.6rem). */
+  --text-section-title: 500 30.4px/1.3 var(--font-sans); /* Home section h2: About, Expertise, Featured work. */
+  --text-subsection-title: 500 22.4px/1.4 var(--font-sans); /* About page section h2: Work Experience, Clients & collaborators. */
+  --text-service-title: 600 22.4px/1.3 var(--font-sans); /* Expertise card title. */
+  --text-case-title: 500 20px/1.4 var(--font-sans); /* Case-study card title. */
+  --text-brand: 600 18.4px/1.4 var(--font-sans); /* The wordmark in the header. There is no logo; the brand is set in type. */
+  --text-role-title: 600 16.8px/1.5 var(--font-sans); /* Left-column title of an Experience row (roles, Education, Core Competencies). */
+  --text-lede: 400 17px/1.55 var(--font-sans); /* Hero and page-head intro paragraphs in `ink-soft`, max 46–56ch. */
+  --text-body: 400 16px/1.55 var(--font-sans); /* Default running text. */
+  --text-body-sm: 400 15.2px/1.55 var(--font-sans); /* Card descriptions, experience bullets, education and competency lists, in `ink-soft`, max 62ch. */
+  --text-nav: 400 15px/1.55 var(--font-sans); /* Header nav links; 13.6px under 640px. */
+  --text-meta: 400 14px/1.55 var(--font-sans); /* Dates, card index numbers (001), inline 'Read more' links, footer. */
+  --text-label: 400 13.6px/1.55 var(--font-sans); /* Small section labels and fact terms, in `ink-soft`. */
+  --text-control: 500 14px/20px var(--font-sans); /* Labels, tab triggers, toggles, menu labels, alert and card titles at control size. */
+  --text-control-text: 400 14px/20px var(--font-sans); /* Text inside inputs, selects and menu items; descriptions in components. */
+  --text-caption: 400 12px/16px var(--font-sans); /* Tooltips, kbd keys, shortcut hints. */
+  --text-badge: 500 12px/16px var(--font-sans); /* Badge text. */
+}
+.hero {
+  font-family: var(--font-sans);
+  font-size: 57.6px;
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.page-title {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.contact-title {
+  font-family: var(--font-sans);
+  font-size: 41.6px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.section-title {
+  font-family: var(--font-sans);
+  font-size: 30.4px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.subsection-title {
+  font-family: var(--font-sans);
+  font-size: 22.4px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.service-title {
+  font-family: var(--font-sans);
+  font-size: 22.4px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.case-title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.brand {
+  font-family: var(--font-sans);
+  font-size: 18.4px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.role-title {
+  font-family: var(--font-sans);
+  font-size: 16.8px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.lede {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.body-sm {
+  font-family: var(--font-sans);
+  font-size: 15.2px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.nav {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.meta {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 13.6px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.control {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.control-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.caption {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.badge {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+}

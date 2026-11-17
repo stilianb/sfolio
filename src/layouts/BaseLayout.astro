@@ -1,0 +1,68 @@
+---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+import geistLatin from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import geistLatinExt from "@fontsource-variable/geist/files/geist-latin-ext-wght-normal.woff2?url";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ContactBlock from "../components/ContactBlock.astro";
+import { SITE_URL } from "../site.config";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+  showContact?: boolean;
+}
+
+const { title, description, image, showContact = true } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const og = image
+  ? await getImage({ src: image, width: 1200, height: 630, format: "jpeg", fit: "cover" })
+  : null;
+const ogUrl = og ? new URL(og.src, SITE_URL).href : undefined;
+
+const fontCss = `
+@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url("${geistLatinExt}") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url("${geistLatin}") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {ogUrl && <meta property="og:image" content={ogUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogUrl && <meta name="twitter:image" content={ogUrl} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
+    <Fragment set:html={`<style>${fontCss}</style>`} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+      {showContact && <ContactBlock />}
+    </main>
+    <SiteFooter />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/tokens.css";
+  @import "../styles/global.css";
+  @import "../styles/site.css";
+</style>

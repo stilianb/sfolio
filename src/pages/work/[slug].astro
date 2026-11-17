@@ -1,0 +1,51 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CaseHero from "../../components/CaseHero.astro";
+import NextProject from "../../components/NextProject.astro";
+import { imageAlt } from "../../lib/image-alts";
+import { getWork } from "../../lib/work";
+
+export async function getStaticPaths() {
+  const all = await getWork();
+  return all.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const all = await getWork();
+const next = all.find((item) => item.data.slug === entry.data.next);
+if (!next) {
+  throw new Error(`No next project for ${entry.data.slug}`);
+}
+
+const coverKey = `${entry.data.slug}-cover` as keyof typeof imageAlt;
+const description = `${entry.data.title}. ${entry.data.summary}`;
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Scully Balasopoulov`}
+  description={description}
+  image={entry.data.cover}
+>
+  <CaseHero
+    title={entry.data.title}
+    project={entry.data.meta.project}
+    role={entry.data.meta.role}
+    type={entry.data.meta.type}
+    scope={entry.data.meta.scope}
+    cover={entry.data.cover}
+    coverAlt={imageAlt[coverKey]}
+  />
+  <div class="org-wrap">
+    <Content />
+    <NextProject href={`/work/${next.data.slug}/`} title={next.data.title} />
+  </div>
+</BaseLayout>

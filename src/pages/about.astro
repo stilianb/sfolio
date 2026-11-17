@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FrameImage from "../components/FrameImage.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import portrait from "../assets/about-portrait.png";
+import { imageAlt } from "../lib/image-alts";
+
+const description =
+  "I'm a strategic and creative design leader based in Denver, CO with over 20 years of experience turning intricate systems into intuitive digital experiences that scale across global organizations.";
+
+const clients = ["Deloitte", "Accenture", "Cisco", "ServiceNow", "Brillio", "Boeing", "Ballas Creative"];
+---
+
+<BaseLayout title="About — Scully Balasopoulov" description={description} image={portrait}>
+  <h1 class="sr-only">About</h1>
+  <section class="org-profile">
+    <div class="org-wrap">
+      <div class="portrait">
+        <FrameImage
+          src={portrait}
+          alt={imageAlt.portrait}
+          widths={[768, 1200, 1600]}
+          sizes="(max-width: 720px) calc(100vw - 40px), 1376px"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="org-profile-text">
+        <div></div>
+        <div>
+          <p class="lead">
+            I'm a strategic and creative design leader based in Denver, CO with over 20 years of experience turning intricate systems into intuitive digital experiences that scale across global organizations.
+          </p>
+          <p>
+            My path started in visual and graphic design before moving into digital product work, where I found the real challenge: not making something look good, but making something complicated feel obvious.
+          </p>
+          <p>
+            Today my focus spans UX, UI, and the design systems that hold enterprise products together. Governance, craft, and user-centered thinking, working as one practice rather than three separate jobs.
+          </p>
+          <p>
+            I lead by building teams and processes that outlast any single project, so the people I work with keep shipping good work long after I've moved on.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="org-section org-experience">
+    <div class="org-wrap">
+      <h2>Work Experience</h2>
+      <div>
+        <ExperienceItem role="Sr. Staff UX/UI" org="ServiceNow" dates="Feb 2023 – Sep 2026">
+          <ul class="exp-bullets">
+            <li>Developed enterprise design solutions for CMPro, SOM and other world-class product experiences as part of the Experience Design (XD) team</li>
+            <li>Drove user experiences from concept to delivery, grounded in a deep understanding of user needs and design principles</li>
+            <li>Championed the design approach and reconciled feedback from stakeholders in a collaborative, supportive environment</li>
+          </ul>
+        </ExperienceItem>
+        <ExperienceItem role="Global Creative Director" org="Brillio" dates="Jan 2022 – Feb 2023">
+          <ul class="exp-bullets">
+            <li>Built and led design operations for a team of 100+ practitioners across research, design, product strategy and content</li>
+            <li>Established a customer-centric design process integrating user research and behavioral analytics</li>
+            <li>Implemented design system governance that reduced inconsistencies by 65% through reusable components</li>
+          </ul>
+        </ExperienceItem>
+        <ExperienceItem role="Global Design Lead" org="Cisco" dates="May 2020 – Jan 2022">
+          <ul class="exp-bullets">
+            <li>Led creative and digital initiatives for Cisco's design team, including UX/UI, publishing and product design</li>
+            <li>Conceptualized and developed the Cisco.com online experience</li>
+            <li>Led design implementation for the Cisco.com Reimagined global design system and content rollout</li>
+            <li>Built workflows and creative process with Business, Product and Marketing leaders; hired, trained and mentored studios worldwide</li>
+          </ul>
+        </ExperienceItem>
+        <ExperienceItem role="Creative Director" org="Deloitte" dates="Jul 2012 – Sep 2019">
+          <ul class="exp-bullets">
+            <li>Led $250M+ in enterprise product design initiatives for Fortune 500 clients through unified design systems and methods</li>
+            <li>Established a design excellence program adopted across 12 international studios</li>
+            <li>Developed governance frameworks balancing innovation with consistency across distributed teams</li>
+          </ul>
+        </ExperienceItem>
+        <ExperienceItem role="Education">
+          <ul class="edu-list">
+            <li>B.A., Music, Viola and Piano — Bulgarian National Conservatory</li>
+            <li>Diploma, Art and Graphic Design — Bulgarian Institute of Art &amp; Design</li>
+            <li>Diploma, Web Management — Rocky Mountain Digital Art Center</li>
+          </ul>
+        </ExperienceItem>
+        <ExperienceItem role="Core Competencies">
+          <ul class="competency-list">
+            <li>Human-Centric Design</li>
+            <li>Product Design Leadership</li>
+            <li>Visualization &amp; Prototyping</li>
+            <li>Design Systems &amp; Scale</li>
+            <li>Design Thinking &amp; Strategy</li>
+            <li>Communication &amp; Collaboration</li>
+            <li>Global Team Development</li>
+            <li>Experience Design &amp; Innovation</li>
+            <li>Enterprise Product Strategy</li>
+            <li>Multi-Product Integration Strategy</li>
+            <li>Visual/Technical Craft</li>
+            <li>User Research &amp; Insights</li>
+            <li>AI-Enabled Innovation</li>
+            <li>Data-Driven Design</li>
+          </ul>
+        </ExperienceItem>
+      </div>
+    </div>
+  </section>
+
+  <section class="org-section org-clients">
+    <div class="org-wrap">
+      <h2>Clients &amp; collaborators</h2>
+      <div class="org-client-grid">
+        {clients.map((name) => <span>{name}</span>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
