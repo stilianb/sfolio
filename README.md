@@ -18,7 +18,20 @@ npm run build
 npm run preview
 ```
 
-`npm run build` writes the site to `dist/`. That folder is the deploy artifact: HTML, CSS, images, `sitemap-index.xml`, and `robots.txt`. No server adapter.
+`npm run build` writes the site to `dist/`. That folder is the deploy artifact: HTML, CSS, images, and `robots.txt`. No server adapter.
+
+## Password gate
+
+Every page is behind one password field. After the build, `integrations/password-gate.mjs` encrypts each HTML page in `dist/` (AES-256-GCM, key from PBKDF2-SHA256) and replaces it with a small unlock page, so the page markup is never served in plain text. A correct entry is remembered for the browser tab session.
+
+The password is read from `SITE_PASSWORD`:
+
+- Locally: put `SITE_PASSWORD=...` in `.env` (git-ignored).
+- In CI: add a repository secret named `SITE_PASSWORD` (Settings → Secrets and variables → Actions).
+
+The build fails if it is missing, so the site is never published unprotected. To change the password, update both places and redeploy.
+
+Search engines are kept out by `robots.txt` (`Disallow: /`), a `noindex, nofollow` robots meta tag on every page and on the unlock page, and no sitemap. `npm run dev` does not apply the gate.
 
 ## Add a case study
 
@@ -50,7 +63,7 @@ In the GitHub repo, Settings → Pages → Build and deployment must be **GitHub
 
 | Constant | Where | What to set |
 |---|---|---|
-| `SITE_ORIGIN`, `BASE_PATH` | `src/site.config.ts` | The public origin and an optional path. `BASE_PATH` is empty for `scullybalasopoulov.com`. `SITE_URL` is those two joined. Canonical URLs, Open Graph, the sitemap, and `robots.txt` use `SITE_URL`. |
+| `SITE_ORIGIN`, `BASE_PATH` | `src/site.config.ts` | The public origin and an optional path. `BASE_PATH` is empty for `scullybalasopoulov.com`. `SITE_URL` is those two joined. Canonical URLs and Open Graph use `SITE_URL`. |
 | `LINKEDIN_URL` | `src/site.config.ts` | The LinkedIn profile. |
 | `FORM_ACTION` | `src/site.config.ts` | Where the contact form posts. |
 

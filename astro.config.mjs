@@ -1,16 +1,16 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
 import { BASE_PATH, SITE_ORIGIN } from "./src/site.config.ts";
 import { remarkCaseSections } from "./src/lib/remark-case-sections.js";
+import passwordGate from "./integrations/password-gate.mjs";
 
 export default defineConfig({
   site: SITE_ORIGIN,
   ...(BASE_PATH ? { base: BASE_PATH } : {}),
   output: "static",
   trailingSlash: "always",
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), passwordGate()],
   markdown: {
     processor: unified({
       remarkPlugins: [remarkCaseSections],
