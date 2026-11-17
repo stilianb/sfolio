@@ -22,7 +22,7 @@ npm run preview
 
 ## Password gate
 
-Every page is behind one password field. After the build, `integrations/password-gate.mjs` encrypts each HTML page in `dist/` (AES-256-GCM, key from PBKDF2-SHA256) and replaces it with a small unlock page, so the page markup is never served in plain text. A correct entry is remembered for the browser tab session.
+Every page is behind one password field, with a control to show the password and an Enter button. After the build, `integrations/password-gate.mjs` encrypts each HTML page in `dist/` (AES-256-GCM, key from PBKDF2-SHA256) and replaces it with a small unlock page, so the page markup is never served in plain text. A correct entry is remembered for the browser tab session. The value is trimmed, so a trailing newline in the secret does not change it.
 
 The password is read from `SITE_PASSWORD`:
 
