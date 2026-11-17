@@ -1,10 +1,10 @@
 /**
- * GitHub Pages project site.
- * `site` in Astro is the origin only; `base` is the repo path.
- * SITE_URL is the public address of this site, with no trailing slash.
+ * Public site. SITE_ORIGIN has no trailing slash.
+ * BASE_PATH is empty when the site is served from the domain root.
+ * A project path such as `/sfolio` is only for a `*.github.io` project site.
  */
-export const SITE_ORIGIN = "https://stilianb.github.io";
-export const BASE_PATH = "/sfolio";
+export const SITE_ORIGIN = "https://scullybalasopoulov.com";
+export const BASE_PATH = "";
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
 
 /** LinkedIn profile, used in the footer, contact block and contact page. */

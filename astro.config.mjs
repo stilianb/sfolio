@@ -7,7 +7,7 @@ import { remarkCaseSections } from "./src/lib/remark-case-sections.js";
 
 export default defineConfig({
   site: SITE_ORIGIN,
-  base: BASE_PATH,
+  ...(BASE_PATH ? { base: BASE_PATH } : {}),
   output: "static",
   trailingSlash: "always",
   integrations: [mdx(), sitemap()],

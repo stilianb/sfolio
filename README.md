@@ -44,19 +44,19 @@ Give every image a real `alt`. Use `alt=""` only when the image adds nothing a n
 
 ## Deploy
 
-The site is published with GitHub Pages from `.github/workflows/pages.yml`. A push to `main` builds `dist/` and deploys it. The public URL is `https://stilianb.github.io/sfolio/`.
+The site is published with GitHub Pages from `.github/workflows/pages.yml`. A push to `main` builds `dist/` and deploys it. The public URL is `https://scullybalasopoulov.com/`.
 
 In the GitHub repo, Settings → Pages → Build and deployment must be **GitHub Actions**.
 
 | Constant | Where | What to set |
 |---|---|---|
-| `SITE_ORIGIN`, `BASE_PATH` | `src/site.config.ts` | The Pages origin and repo path. `SITE_URL` is those two joined. Canonical URLs, Open Graph, the sitemap, and `robots.txt` use `SITE_URL`. |
+| `SITE_ORIGIN`, `BASE_PATH` | `src/site.config.ts` | The public origin and an optional path. `BASE_PATH` is empty for `scullybalasopoulov.com`. `SITE_URL` is those two joined. Canonical URLs, Open Graph, the sitemap, and `robots.txt` use `SITE_URL`. |
 | `LINKEDIN_URL` | `src/site.config.ts` | The LinkedIn profile. |
 | `FORM_ACTION` | `src/site.config.ts` | Where the contact form posts. |
 
-GitHub Pages only serves files. It does not receive form posts. Leave `FORM_ACTION` as `/contact/thanks/` and the button opens that page without storing the message. To deliver messages, set `FORM_ACTION` to a form endpoint such as `https://formspree.io/f/xxxx` and set that endpoint's redirect to `https://stilianb.github.io/sfolio/contact/thanks/`. A full URL turns the Netlify form attribute off.
+GitHub Pages only serves files. It does not receive form posts. Leave `FORM_ACTION` as `/contact/thanks/` and the button opens that page without storing the message. To deliver messages, set `FORM_ACTION` to a form endpoint such as `https://formspree.io/f/xxxx` and set that endpoint's redirect to `https://scullybalasopoulov.com/contact/thanks/`. A full URL turns the Netlify form attribute off.
 
-A custom domain replaces `SITE_ORIGIN` and, if the site is served from the domain root, `BASE_PATH` becomes `""` or `"/"`. Then update the domain in the Pages settings.
+The custom domain is saved in the repository under Settings → Pages. DNS for `scullybalasopoulov.com` points at GitHub Pages.
 
 ## Design source
 
