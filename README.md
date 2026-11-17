@@ -51,7 +51,7 @@ In the GitHub repo, Settings → Pages → Build and deployment must be **GitHub
 | Constant | Where | What to set |
 |---|---|---|
 | `SITE_ORIGIN`, `BASE_PATH` | `src/site.config.ts` | The Pages origin and repo path. `SITE_URL` is those two joined. Canonical URLs, Open Graph, the sitemap, and `robots.txt` use `SITE_URL`. |
-| `LINKEDIN_URL` | `src/site.config.ts` | The LinkedIn profile. The placeholder is marked TODO. |
+| `LINKEDIN_URL` | `src/site.config.ts` | The LinkedIn profile. |
 | `FORM_ACTION` | `src/site.config.ts` | Where the contact form posts. |
 
 GitHub Pages only serves files. It does not receive form posts. Leave `FORM_ACTION` as `/contact/thanks/` and the button opens that page without storing the message. To deliver messages, set `FORM_ACTION` to a form endpoint such as `https://formspree.io/f/xxxx` and set that endpoint's redirect to `https://stilianb.github.io/sfolio/contact/thanks/`. A full URL turns the Netlify form attribute off.

@@ -7,8 +7,8 @@ export const SITE_ORIGIN = "https://stilianb.github.io";
 export const BASE_PATH = "/sfolio";
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
 
-/** TODO: replace with the real LinkedIn profile URL. */
-export const LINKEDIN_URL = "https://www.linkedin.com/in/TODO";
+/** LinkedIn profile, used in the footer, contact block and contact page. */
+export const LINKEDIN_URL = "https://www.linkedin.com/in/scullyb/";
 
 /**
  * Where the contact form posts.
