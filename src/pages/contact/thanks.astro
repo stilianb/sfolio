@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/paths";
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <section class="org-page-head">
     <div class="org-wrap">
       <h1>Message sent.</h1>
-      <p>Thanks. I read every message and reply personally. <a class="inline-link" href="/">Back home</a></p>
+      <p>Thanks. I read every message and reply personally. <a class="inline-link" href={withBase("/")}>Back home</a></p>
     </div>
   </section>
 </BaseLayout>

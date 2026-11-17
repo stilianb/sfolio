@@ -5,6 +5,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 import CaseCard from "../components/CaseCard.astro";
 import hero from "../assets/home-hero.png";
 import { imageAlt } from "../lib/image-alts";
+import { withBase } from "../lib/paths";
 import { caseStudies, getWork } from "../lib/work";
 
 const studies = caseStudies(await getWork());
@@ -39,7 +40,7 @@ const description =
     <div class="org-wrap org-intro-grid">
       <h2>About</h2>
       <p>
-        I'm a strategic and creative design leader who transforms brands and enterprise practices across complex digital platforms. <a class="inline-link" href="/about/">Read more</a>
+        I'm a strategic and creative design leader who transforms brands and enterprise practices across complex digital platforms. <a class="inline-link" href={withBase("/about/")}>Read more</a>
       </p>
     </div>
   </section>
@@ -107,7 +108,7 @@ const description =
         {
           studies.map((entry) => (
             <CaseCard
-              href={`/work/${entry.data.slug}/`}
+              href={withBase(`/work/${entry.data.slug}/`)}
               title={entry.data.title}
               summary={entry.data.summary}
               image={entry.data.thumbnail}

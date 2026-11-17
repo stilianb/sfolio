@@ -1,16 +1,18 @@
 ---
-const path = Astro.url.pathname;
+import { sitePath, withBase } from "../lib/paths";
+
+const path = sitePath(Astro.url.pathname);
 
 const links = [
-  { href: "/", label: "Home", current: path === "/" },
-  { href: "/about/", label: "About", current: path.startsWith("/about") },
-  { href: "/work/", label: "Work", current: path.startsWith("/work") },
-  { href: "/contact/", label: "Contact", current: path.startsWith("/contact") },
+  { href: withBase("/"), label: "Home", current: path === "/" },
+  { href: withBase("/about/"), label: "About", current: path.startsWith("/about") },
+  { href: withBase("/work/"), label: "Work", current: path.startsWith("/work") },
+  { href: withBase("/contact/"), label: "Contact", current: path.startsWith("/contact") },
 ];
 ---
 
 <header class="site-nav" id="top">
-  <a class="brand" href="/">Think. Create. Transform.</a>
+  <a class="brand" href={withBase("/")}>Think. Create. Transform.</a>
   <nav class="navlinks" aria-label="Main">
     {
       links.map((link) => (

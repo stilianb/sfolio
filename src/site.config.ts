@@ -1,5 +1,11 @@
-/** Public origin used for canonical URLs, Open Graph, the sitemap, and robots.txt. */
-export const SITE_URL = "https://example.com";
+/**
+ * GitHub Pages project site.
+ * `site` in Astro is the origin only; `base` is the repo path.
+ * SITE_URL is the public address of this site, with no trailing slash.
+ */
+export const SITE_ORIGIN = "https://stilianb.github.io";
+export const BASE_PATH = "/sfolio";
+export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
 
 /** TODO: replace with the real LinkedIn profile URL. */
 export const LINKEDIN_URL = "https://www.linkedin.com/in/TODO";

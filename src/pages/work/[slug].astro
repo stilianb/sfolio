@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import CaseHero from "../../components/CaseHero.astro";
 import NextProject from "../../components/NextProject.astro";
 import { imageAlt } from "../../lib/image-alts";
+import { withBase } from "../../lib/paths";
 import { getWork } from "../../lib/work";
 
 export async function getStaticPaths() {
@@ -46,6 +47,6 @@ const description = `${entry.data.title}. ${entry.data.summary}`;
   />
   <div class="org-wrap">
     <Content />
-    <NextProject href={`/work/${next.data.slug}/`} title={next.data.title} />
+    <NextProject href={withBase(`/work/${next.data.slug}/`)} title={next.data.title} />
   </div>
 </BaseLayout>

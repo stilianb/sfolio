@@ -44,19 +44,19 @@ Give every image a real `alt`. Use `alt=""` only when the image adds nothing a n
 
 ## Deploy
 
-The build is static. Set the three values in `src/site.config.ts` before you ship:
+The site is published with GitHub Pages from `.github/workflows/pages.yml`. A push to `main` builds `dist/` and deploys it. The public URL is `https://stilianb.github.io/sfolio/`.
 
-| Constant | What to set |
-|---|---|
-| `SITE_URL` | The public origin, with no trailing slash. Canonical URLs, Open Graph, the sitemap, and `robots.txt` use it. |
-| `LINKEDIN_URL` | The LinkedIn profile. The placeholder is marked TODO. |
-| `FORM_ACTION` | Where the contact form posts. |
+In the GitHub repo, Settings → Pages → Build and deployment must be **GitHub Actions**.
 
-**Netlify.** Leave `FORM_ACTION` as `/contact/thanks/`. The form sets `data-netlify="true"` and a honeypot field when the action is a site path, so Netlify Forms will pick it up from the built HTML. In the Netlify UI, confirm form detection is on. Publish `dist/`, or connect the repo with build command `npm run build` and publish directory `dist`.
+| Constant | Where | What to set |
+|---|---|---|
+| `SITE_ORIGIN`, `BASE_PATH` | `src/site.config.ts` | The Pages origin and repo path. `SITE_URL` is those two joined. Canonical URLs, Open Graph, the sitemap, and `robots.txt` use `SITE_URL`. |
+| `LINKEDIN_URL` | `src/site.config.ts` | The LinkedIn profile. The placeholder is marked TODO. |
+| `FORM_ACTION` | `src/site.config.ts` | Where the contact form posts. |
 
-**Vercel.** Import the repo. Framework preset Astro, output `dist`. Vercel does not process Netlify form attributes. For Vercel, point `FORM_ACTION` at a form endpoint such as Formspree (`https://formspree.io/f/xxxx`). A full URL turns the Netlify attribute off. The thank-you page stays at `/contact/thanks/`; set the endpoint's redirect to that URL if you want the same success page.
+GitHub Pages only serves files. It does not receive form posts. Leave `FORM_ACTION` as `/contact/thanks/` and the button opens that page without storing the message. To deliver messages, set `FORM_ACTION` to a form endpoint such as `https://formspree.io/f/xxxx` and set that endpoint's redirect to `https://stilianb.github.io/sfolio/contact/thanks/`. A full URL turns the Netlify form attribute off.
 
-**Cloudflare Pages.** Build command `npm run build`, output directory `dist`. Use the same `FORM_ACTION` swap as Vercel.
+A custom domain replaces `SITE_ORIGIN` and, if the site is served from the domain root, `BASE_PATH` becomes `""` or `"/"`. Then update the domain in the Pages settings.
 
 ## Design source
 

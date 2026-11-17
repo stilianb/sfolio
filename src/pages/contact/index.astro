@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { EMAIL, FORM_ACTION, LINKEDIN_URL } from "../../site.config";
+import { withBase } from "../../lib/paths";
 import hero from "../../assets/home-hero.png";
 
 const description =
@@ -41,7 +42,7 @@ const netlify = FORM_ACTION.startsWith("/");
         class="contact-form"
         name="contact"
         method="POST"
-        action={FORM_ACTION}
+        action={netlify ? withBase(FORM_ACTION) : FORM_ACTION}
         data-netlify={netlify ? "true" : undefined}
         netlify-honeypot="bot-field"
       >

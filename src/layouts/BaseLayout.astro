@@ -6,7 +6,7 @@ import geistLatinExt from "@fontsource-variable/geist/files/geist-latin-ext-wght
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import ContactBlock from "../components/ContactBlock.astro";
-import { SITE_URL } from "../site.config";
+import { absoluteUrl, withBase } from "../lib/paths";
 
 interface Props {
   title: string;
@@ -16,11 +16,11 @@ interface Props {
 }
 
 const { title, description, image, showContact = true } = Astro.props;
-const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const canonical = absoluteUrl(Astro.url.pathname);
 const og = image
   ? await getImage({ src: image, width: 1200, height: 630, format: "jpeg", fit: "cover" })
   : null;
-const ogUrl = og ? new URL(og.src, SITE_URL).href : undefined;
+const ogUrl = og ? absoluteUrl(og.src) : undefined;
 
 const fontCss = `
 @font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url("${geistLatinExt}") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
@@ -45,7 +45,7 @@ const fontCss = `
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogUrl && <meta name="twitter:image" content={ogUrl} />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
     <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
     <Fragment set:html={`<style>${fontCss}</style>`} />
     <slot name="head" />
